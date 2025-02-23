@@ -7,7 +7,6 @@ public class OrderProcessor {
 
     public void processOrder(Order order) {
         // Process order
-        notificationService.notify("Order processed");
+        notificationService.notify("Order processed " + order.getOrderId());
     }
-
 }
