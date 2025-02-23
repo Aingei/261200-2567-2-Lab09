@@ -26,9 +26,16 @@ public class Main {
         eagle.fly();
         eagle.move();
 
-        Order order = new Order("1234");
-        OrderProcessor emailOrderProcessor = new OrderProcessor(new EmailNotifier());
+        NotificationService emailNotifier = new EmailNotifier();
+        NotificationService smsNotifier = new SMSNotifier();
+
+        OrderProcessor emailOrderProcessor = new OrderProcessor(emailNotifier);
+        OrderProcessor smsOrderProcessor = new OrderProcessor(smsNotifier);
+
+        Order order = new Order("001","halo",1);
+
         emailOrderProcessor.processOrder(order);
+        smsOrderProcessor.processOrder(order);
 
 
     }
